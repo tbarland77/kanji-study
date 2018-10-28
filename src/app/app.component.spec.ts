@@ -1,13 +1,23 @@
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 describe('AppComponent', () => {
+  const AngularFirestoreStub = {
+    // I just mocked the function you need, if there are more, you can add them here.
+    collection: (someString) => {
+        // return mocked collection here
+    }
+};
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        AngularFirestoreModule
       ],
+      providers: [{provide: AngularFirestore, useValue: AngularFirestoreStub}],
       declarations: [
         AppComponent
       ],
