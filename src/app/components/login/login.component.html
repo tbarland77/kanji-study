@@ -1,0 +1,20 @@
+<h1 id="greeting-msg" *ngIf="authService.authState">Welcome!</h1>
+<button class="fill-column log-out-btn" mat-button (click)="logout()" color="warn" *ngIf="authService.authState">Logout</button>
+<ng-container *ngIf="!authService.authState">
+  <mat-card class="page">
+    <form>
+      <div class="form-field-container">
+        <mat-form-field>
+          <input id="email-input" matInput placeholder="Enter a email address" type="email" [(ngModel)]="email" name="email">
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <mat-form-field>
+          <input id="password-input" matInput placeholder="Enter a password" type="password" [(ngModel)]="password" name="password">
+        </mat-form-field>
+      </div>
+      <button type="button" class="fill-column sign-up-btn" mat-button (click)="signup()" color="primary" [disabled]="!email || !password">Sign up</button>
+      <button type="button" class="fill-column log-in-btn" mat-button (click)="login()" color="accent" [disabled]="!email || !password">Login</button>
+    </form>
+  </mat-card>
+</ng-container>

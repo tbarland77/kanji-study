@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  private kanjiCollection: AngularFirestoreCollection<Kanji>;
-  kanji: Observable<Kanji[]>;
+
+  // private kanjiCollection: AngularFirestoreCollection<Kanji>;
+  // kanji: Observable<Kanji[]>;
   constructor(private afs: AngularFirestore) {
-    this.kanjiCollection = afs.collection<Kanji>('kanji');
-    this.kanji = this.kanjiCollection.valueChanges();
+    // this.kanjiCollection = afs.collection<Kanji>('kanji');
+    // this.kanji = this.kanjiCollection.valueChanges();
   }
   title = 'kanji-study';
 }
