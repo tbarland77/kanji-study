@@ -13,6 +13,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let authState: any;
+
   class MockAuthService {
     user: Observable<User>;
     signup() {
@@ -30,6 +31,9 @@ describe('LoginComponent', () => {
   class MockRouter {
     navigate() {
       // stub
+    }
+    navigateByUrl(url: string) {
+      return url;
     }
   }
 
@@ -75,10 +79,13 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
+  describe('component creation', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  });
 
+  describe('calls made to the auth service', () => {
   it('should call signup', () => {
     spyOn(component.authService, 'signup');
     component.signup();
@@ -95,6 +102,13 @@ describe('LoginComponent', () => {
     spyOn(component.authService, 'logout');
     component.logout();
     expect(component.authService.logout).toHaveBeenCalled();
+  });
+
+  it('should call router navigate by url', () => {
+    spyOn(component.router, 'navigateByUrl');
+    component.goToMainMenu();
+    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/menu');
+  });
   });
 
   describe('logged in template tests', () => {
@@ -123,6 +137,24 @@ describe('LoginComponent', () => {
       const signInBtn = fixture.debugElement.query(By.css('.log-out-btn'));
       signInBtn.nativeElement.click();
       expect(component.logout).toHaveBeenCalled();
+    });
+
+    it('should display the menu button when the user is logged in', () => {
+      const menuBtn = fixture.debugElement.query(By.css('.main-menu-btn'));
+      expect(menuBtn.nativeElement).toBeTruthy();
+    });
+
+    it('should display the menu button when the user is logged in', () => {
+      const menuBtn = fixture.debugElement.query(By.css('.main-menu-btn'));
+      expect(menuBtn.nativeElement).toBeTruthy();
+    });
+
+    it('should call to to main menu on click', () => {
+      spyOn(component, 'goToMainMenu');
+      fixture.detectChanges();
+      const menuBtn = fixture.debugElement.query(By.css('.main-menu-btn'));
+      menuBtn.nativeElement.click();
+      expect(component.goToMainMenu).toHaveBeenCalled();
     });
   });
 

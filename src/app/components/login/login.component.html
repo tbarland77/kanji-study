@@ -1,5 +1,8 @@
+<mat-card class="page">
 <h1 id="greeting-msg" *ngIf="authService.authState">Welcome!</h1>
+<button type="button" class="fill-column main-menu-btn" mat-button (click)="goToMainMenu()" color="primary" *ngIf="authService.authState">Main Menu</button>
 <button class="fill-column log-out-btn" mat-button (click)="logout()" color="warn" *ngIf="authService.authState">Logout</button>
+</mat-card>
 <ng-container *ngIf="!authService.authState">
   <mat-card class="page">
     <form>
@@ -18,3 +21,5 @@
     </form>
   </mat-card>
 </ng-container>
+
+<router-outlet></router-outlet>

@@ -9,17 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { MaterialAppModule } from './modules/ngmaterial/ngmaterial.module';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

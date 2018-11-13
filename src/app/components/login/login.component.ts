@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,7 @@ export class LoginComponent  {
   email: string;
   password: string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   // ngOnInit() {
   //   // stub
@@ -27,6 +28,10 @@ export class LoginComponent  {
 
   logout() {
     this.authService.logout();
+  }
+
+  goToMainMenu() {
+    this.router.navigateByUrl('/menu');
   }
 
 }
