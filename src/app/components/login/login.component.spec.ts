@@ -138,6 +138,60 @@ describe('LoginComponent', () => {
       expect(matCard.nativeElement).toBeTruthy();
     });
 
+    it('should disable the sign up button if email is null', () => {
+      spyOn(component, 'signup');
+      component.email = null;
+      fixture.detectChanges();
+      const signInBtn = fixture.debugElement.query(By.css('.sign-up-btn'));
+      signInBtn.nativeElement.click();
+      expect(component.signup).not.toHaveBeenCalled();
+    });
+
+    it('should disable the sign up button if password is null', () => {
+      spyOn(component, 'signup');
+      component.password = null;
+      fixture.detectChanges();
+      const signInBtn = fixture.debugElement.query(By.css('.sign-up-btn'));
+      signInBtn.nativeElement.click();
+      expect(component.signup).not.toHaveBeenCalled();
+    });
+
+    it('should disable the sign up button if email and password are both null', () => {
+      spyOn(component, 'signup');
+      component.password = null;
+      fixture.detectChanges();
+      const signInBtn = fixture.debugElement.query(By.css('.sign-up-btn'));
+      signInBtn.nativeElement.click();
+      expect(component.signup).not.toHaveBeenCalled();
+    });
+
+    it('should disable the login button if email is null', () => {
+      spyOn(component, 'login');
+      component.email = null;
+      fixture.detectChanges();
+      const logInBtn = fixture.debugElement.query(By.css('.log-in-btn'));
+      logInBtn.nativeElement.click();
+      expect(component.login).not.toHaveBeenCalled();
+    });
+
+    it('should disable the login button if password is null', () => {
+      spyOn(component, 'login');
+      component.password = null;
+      fixture.detectChanges();
+      const logInBtn = fixture.debugElement.query(By.css('.log-in-btn'));
+      logInBtn.nativeElement.click();
+      expect(component.login).not.toHaveBeenCalled();
+    });
+
+    it('should disable the login button if email and password are null', () => {
+      spyOn(component, 'login');
+      component.password = null;
+      fixture.detectChanges();
+      const logInBtn = fixture.debugElement.query(By.css('.log-in-btn'));
+      logInBtn.nativeElement.click();
+      expect(component.login).not.toHaveBeenCalled();
+    });
+
     it('should call signup when the user has entered an email and password', () => {
       spyOn(component, 'signup');
       component.email = 'test@test.com';
