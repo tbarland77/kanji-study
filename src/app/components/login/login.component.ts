@@ -13,11 +13,6 @@ export class LoginComponent  {
 
   constructor(public authService: AuthService, public router: Router) { }
 
-  // ngOnInit() {
-  //   // stub
-  //   console.dir(this.authService.authState);
-  // }
-
   signup() {
     this.authService.signup(this.email, this.password);
   }

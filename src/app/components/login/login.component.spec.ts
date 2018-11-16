@@ -149,7 +149,7 @@ describe('LoginComponent', () => {
       expect(menuBtn.nativeElement).toBeTruthy();
     });
 
-    it('should call to to main menu on click', () => {
+    it('should call go to main menu on click', () => {
       spyOn(component, 'goToMainMenu');
       fixture.detectChanges();
       const menuBtn = fixture.debugElement.query(By.css('.main-menu-btn'));

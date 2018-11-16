@@ -12,12 +12,14 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialAppModule } from './modules/ngmaterial/ngmaterial.module';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
+import { CardViewComponent } from './components/card-view/card-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MenuComponent,
+    CardViewComponent,
   ],
   imports: [
     BrowserModule,
