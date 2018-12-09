@@ -17,9 +17,10 @@ export class MenuComponent implements OnInit {
   }
 
   navigateToStudy(studyLevel: number) {
+    console.log(studyLevel);
     for (const studyItem in this.studyLevels) {
       if (studyLevel === Number(studyItem)) {
-        this.router.navigate(['/study', studyLevel]);
+        this.router.navigate(['/study', StudyLevel[studyLevel]]);
       }
     }
   }

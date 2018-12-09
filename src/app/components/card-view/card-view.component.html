@@ -1,3 +1,22 @@
-<p>
-  card-view works!
-</p>
+<mat-grid-list cols="2" rowHeight="2:1" *ngIf="studyList">
+  <div>
+    Character: {{studyList[answerIndex].character}}
+  </div>
+  <div>
+    Score: {{score}}
+  </div>
+  <ng-container *ngFor="let card of currentCards; index as i">
+    <mat-grid-tile (click)="compareUserSelectedAnswer(studyList[i])">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div>訓読み：{{studyList[i].kunyomi}}</div>
+          <div>音読み：{{studyList[i].onyomi}}</div>
+        </mat-card-header>
+        <mat-card-footer>
+          <div>意味(英語)：{{studyList[i].meaning}}</div>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </ng-container>
+
+</mat-grid-list>

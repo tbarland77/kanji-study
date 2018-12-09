@@ -1,7 +1,7 @@
 export enum StudyLevel {
-    N5 = 1,
-    N4,
-    N3,
-    N2,
-    N1,
+    JLPTN5 = 1,
+    JLPTN4,
+    JLPTN3,
+    JLPTN2,
+    JLPTN1,
 }

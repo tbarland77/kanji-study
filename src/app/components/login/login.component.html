@@ -1,4 +1,4 @@
-<mat-card class="page">
+<mat-card class="page" *ngIf="authService.authState">
 <h1 id="greeting-msg" *ngIf="authService.authState">Welcome!</h1>
 <button type="button" class="fill-column main-menu-btn" mat-button (click)="goToMainMenu()" color="primary" *ngIf="authService.authState">Main Menu</button>
 <button class="fill-column log-out-btn" mat-button (click)="logout()" color="warn" *ngIf="authService.authState">Logout</button>
