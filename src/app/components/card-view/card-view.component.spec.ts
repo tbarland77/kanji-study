@@ -51,7 +51,7 @@ describe('CardViewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CardViewComponent ],
       providers: [
-        { provide: ActivatedRoute,  useValue: {params: of({id: 1})} },
+        { provide: ActivatedRoute,  useValue: {params: of({id: 'JLPTN5'})} },
         { provide: KanjiStudyService, useClass: MockKanjiStudyService },
       ],
       schemas: [
@@ -72,6 +72,18 @@ describe('CardViewComponent', () => {
   });
 
   describe('ngOnInit', () => {
-
+    it('should initialize the study level', () => {
+      component.ngOnInit();
+      expect(component.studyLevel).toBe('JLPTN5');
+    });
+    it('should initialize the study list', () => {
+      component.ngOnInit();
+      expect(component.studyList.length).toBe(4);
+    });
+    it('should call shuffle cards', () => {
+      spyOn(component, 'shuffleCards');
+      component.ngOnInit();
+      expect(component.shuffleCards).toHaveBeenCalled();
+    });
   });
 });
