@@ -86,4 +86,53 @@ describe('CardViewComponent', () => {
       expect(component.shuffleCards).toHaveBeenCalled();
     });
   });
+
+  describe('shuffle cards', () => {
+    it('should call sort on the study list', () => {
+      spyOn(component.studyList, 'sort');
+      component.shuffleCards();
+      expect(component.studyList.sort).toHaveBeenCalled();
+    });
+    it('should set the current cards', () => {
+      component.shuffleCards();
+      expect(component.currentCards.length).toBe(4);
+    });
+    it('should call choose answer', () => {
+      spyOn(component, 'chooseAnswer');
+      component.shuffleCards();
+      expect(component.chooseAnswer).toHaveBeenCalled();
+    });
+  });
+
+  describe('choose answer', () => {
+    it('should set the answer', () => {
+      component.currentCards = mockKanjiResponse;
+      component.chooseAnswer();
+      expect(component.currentCards).toContain(component.answer);
+    });
+    it('should set the answer index', () => {
+      component.currentCards = mockKanjiResponse;
+      component.chooseAnswer();
+      expect(component.answerIndex).not.toBeNull();
+    });
+  });
+
+  describe('compare user selected answer', () => {
+    it('should increase the score given the answer was correct', () => {
+      component.answer = mockKanjiResponse[1];
+      component.compareUserSelectedAnswer(mockKanjiResponse[1]);
+      expect(component.score).toBe(1);
+    });
+    it('should not increase the score given the answer was incorrect', () => {
+      component.answer = mockKanjiResponse[1];
+      component.compareUserSelectedAnswer(mockKanjiResponse[3]);
+      expect(component.score).toBe(0);
+    });
+    it('should call shuffle cards to begin the next question', () => {
+      spyOn(component, 'shuffleCards');
+      component.answer = mockKanjiResponse[1];
+      component.compareUserSelectedAnswer(mockKanjiResponse[3]);
+      expect(component.shuffleCards).toHaveBeenCalled();
+    });
+  });
 });
