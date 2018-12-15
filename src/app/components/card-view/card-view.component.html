@@ -1,6 +1,6 @@
 <mat-grid-list cols="2" rowHeight="2:1" *ngIf="studyList">
-  <div>
-    Character: {{studyList[answerIndex].character}}
+  <div class="answer-character">
+ Character: {{studyList[answerIndex].character}}
   </div>
   <div>
     Score: {{score}}
@@ -9,11 +9,11 @@
     <mat-grid-tile (click)="compareUserSelectedAnswer(studyList[i])">
       <mat-card class="example-card">
         <mat-card-header>
-          <div>訓読み：{{studyList[i].kunyomi}}</div>
-          <div>音読み：{{studyList[i].onyomi}}</div>
+          <div class="kunyomi">訓読み: {{studyList[i].kunyomi}}</div>
+          <div class="onyomi">音読み: {{studyList[i].onyomi}}</div>
         </mat-card-header>
         <mat-card-footer>
-          <div>意味(英語)：{{studyList[i].meaning}}</div>
+          <div class="meaning">意味(英語): {{studyList[i].meaning}}</div>
         </mat-card-footer>
       </mat-card>
     </mat-grid-tile>
