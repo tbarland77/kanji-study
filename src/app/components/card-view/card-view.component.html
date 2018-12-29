@@ -1,20 +1,22 @@
 <mat-grid-list cols="2" rowHeight="2:1" *ngIf="studyList">
   <div class="answer-character">
- Character: {{studyList[answerIndex].character}}
-  </div>
-  <div>
-    Score: {{score}}
+    Character: {{studyList[answerIndex].character}}
+    <span class="score">
+      Score: {{score}}
+    </span>
   </div>
   <ng-container *ngFor="let card of currentCards; index as i">
     <mat-grid-tile (click)="compareUserSelectedAnswer(studyList[i])">
-      <mat-card class="example-card">
+      <mat-card class="kanji-card">
         <mat-card-header>
           <div class="kunyomi">訓読み: {{studyList[i].kunyomi}}</div>
+        </mat-card-header>
+        <mat-card-header>
           <div class="onyomi">音読み: {{studyList[i].onyomi}}</div>
         </mat-card-header>
-        <mat-card-footer>
+        <mat-card-header>
           <div class="meaning">意味(英語): {{studyList[i].meaning}}</div>
-        </mat-card-footer>
+        </mat-card-header>
       </mat-card>
     </mat-grid-tile>
   </ng-container>

@@ -41,7 +41,6 @@ export class CardViewComponent implements OnInit {
   chooseAnswer() {
     this.answer = this.currentCards[Math.floor(Math.random() * this.currentCards.length)];
     this.answerIndex = this.currentCards.findIndex(x => x.character === this.answer.character);
-    this.answer = this.studyList[this.answerIndex];
   }
 
   compareUserSelectedAnswer(selectedCard: Kanji) {
